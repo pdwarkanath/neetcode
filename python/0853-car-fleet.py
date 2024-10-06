@@ -4,7 +4,7 @@ class Solution:
         pair.sort(reverse=True)
         stack = []
         for p, s in pair:  # Reverse Sorted Order
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
+            t = (target - p) / s
+            if not stack or t > stack[-1]:
+                stack.append(t)
         return len(stack)
